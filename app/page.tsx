@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
-import { getSession, login, logout } from "@/lib";
+import { redirect } from 'next/navigation';
+import { getSession, login, logout } from '@/lib';
 
 export default async function Page() {
   const session = await getSession();
@@ -7,23 +7,23 @@ export default async function Page() {
     <section>
       <form
         action={async (formData) => {
-          "use server";
+          'use server';
           await login(formData);
-          redirect("/");
+          redirect('/');
         }}
       >
-        <input type="email" placeholder="Email" />
+        <input type='email' placeholder='Email' />
         <br />
-        <button type="submit">Login</button>
+        <button type='submit'>Login</button>
       </form>
       <form
         action={async () => {
-          "use server";
+          'use server';
           await logout();
-          redirect("/");
+          redirect('/');
         }}
       >
-        <button type="submit">Logout</button>
+        <button type='submit'>Logout</button>
       </form>
       <pre>{JSON.stringify(session, null, 2)}</pre>
     </section>
